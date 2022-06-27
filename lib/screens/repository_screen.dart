@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:git_repo_flutter/models/sample_data.dart';
+import 'package:git_repo_flutter/screens/elements/repository_tile.dart';
 import 'package:git_repo_flutter/utils/constants.dart';
 
 class RepositoryScreen extends StatelessWidget {
@@ -18,6 +20,7 @@ class RepositoryScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // page ui : top
                 Padding(
                   padding: const EdgeInsets.only(
                       top: AppConstants.topPadding,
@@ -30,10 +33,28 @@ class RepositoryScreen extends StatelessWidget {
                         "Repositories",
                         style: themeData.textTheme.headline1,
                       ),
-                      Icon(Icons.filter_alt_outlined),
+                      InkWell(
+                        onTap: () {},
+                        splashColor: themeData.colorScheme.secondary,
+                        customBorder: const CircleBorder(),
+                        child: Container(
+                          height: 40,
+                          width: 40,
+                          decoration: BoxDecoration(
+                            color: themeData.colorScheme.onBackground
+                                .withOpacity(0.3),
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Icons.filter_alt_outlined,
+                            size: 20,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
+                //page ui : bottom
                 Expanded(
                   child: Padding(
                     padding:
@@ -45,6 +66,19 @@ class RepositoryScreen extends StatelessWidget {
                           borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(30),
                               topRight: Radius.circular(30))),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            top: AppConstants.sidePadding,
+                            left: AppConstants.sidePadding,
+                            right: AppConstants.sidePadding),
+                        child: ListView.builder(
+                            physics: const BouncingScrollPhysics(),
+                            itemCount: sampleData.length,
+                            itemBuilder: (context, index) {
+                              return RepositoryTile(
+                                  itemData: sampleData[index]);
+                            }),
+                      ),
                     ),
                   ),
                 ),

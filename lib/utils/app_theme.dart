@@ -35,7 +35,7 @@ const TextTheme _defaultTextTheme = TextTheme(
   headline3:
       TextStyle(color: customBlack, fontWeight: FontWeight.w700, fontSize: 20),
   headline4:
-      TextStyle(color: customBlue, fontWeight: FontWeight.w700, fontSize: 20),
+      TextStyle(color: customBlue, fontWeight: FontWeight.w700, fontSize: 16),
   headline5:
       TextStyle(color: customBlack, fontWeight: FontWeight.w700, fontSize: 14),
   headline6:
@@ -65,7 +65,7 @@ const TextTheme _smallTextTheme = TextTheme(
   headline3:
       TextStyle(color: customBlack, fontWeight: FontWeight.w700, fontSize: 18),
   headline4:
-      TextStyle(color: customBlue, fontWeight: FontWeight.w700, fontSize: 18),
+      TextStyle(color: customBlue, fontWeight: FontWeight.w700, fontSize: 14),
   headline5:
       TextStyle(color: customBlack, fontWeight: FontWeight.w700, fontSize: 12),
   headline6:
