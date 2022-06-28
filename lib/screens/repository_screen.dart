@@ -13,14 +13,24 @@ class RepositoryScreen extends StatelessWidget {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
         backgroundColor: themeData.colorScheme.primary,
+        appBar: AppBar(
+          toolbarHeight: 0,
+          elevation: 0,
+          systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
+              statusBarColor: themeData.colorScheme.primary,
+              statusBarIconBrightness: Brightness.dark),
+        ),
         body: SafeArea(
+          left: false,
+          right: false,
+          bottom: false,
           child: Container(
             height: screenSize.height,
             width: screenSize.width,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // page ui : top
+                // page ui : top => Headline and filter
                 Padding(
                   padding: const EdgeInsets.only(
                       top: AppConstants.topPadding,
@@ -54,7 +64,7 @@ class RepositoryScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                //page ui : bottom
+                //page ui : bottom => list of repositories
                 Expanded(
                   child: Padding(
                     padding:

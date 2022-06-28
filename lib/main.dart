@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:git_repo_flutter/screens/repository_screen.dart';
+import 'package:get/get.dart';
+import 'package:git_repo_flutter/utils/app_pages.dart';
+import 'package:git_repo_flutter/utils/app_routes.dart';
 import 'package:git_repo_flutter/utils/app_theme.dart';
 
 void main() {
@@ -12,11 +14,12 @@ class GitRepoApp extends StatelessWidget {
   // This widget is the root.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Git Repositories',
       debugShowCheckedModeBanner: false,
       theme: AppTheme().lightTheme,
-      home: RepositoryScreen(),
+      initialRoute: AppRoutes.repository,
+      getPages: AppPages.pages,
     );
   }
 }

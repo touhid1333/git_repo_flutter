@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:git_repo_flutter/screens/elements/star_lang_row.dart';
+import 'package:git_repo_flutter/utils/app_routes.dart';
 import 'package:git_repo_flutter/utils/constants.dart';
 import 'package:git_repo_flutter/utils/widget_function.dart';
 
@@ -13,7 +16,10 @@ class RepositoryTile extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     return Material(
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          //item click logic
+          Get.toNamed(AppRoutes.repositoryDetail);
+        },
         splashColor: themeData.colorScheme.secondary,
         child: Column(
           children: [
@@ -42,42 +48,13 @@ class RepositoryTile extends StatelessWidget {
                               style: themeData.textTheme.headline4,
                             ),
                             addVerticalSpace(10),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: screenWidth * 0.33,
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.star,
-                                        color: themeData.colorScheme.onBackground,
-                                      ),
-                                      addHorizontalSpace(10),
-                                      Text(
-                                        itemData["stargazers_count"].toString(),
-                                        style: themeData.textTheme.bodyText2,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: screenWidth * 0.33,
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.language,
-                                        color: themeData.colorScheme.onBackground,
-                                      ),
-                                      addHorizontalSpace(10),
-                                      Text(
-                                        itemData["language"].toString(),
-                                        style: themeData.textTheme.bodyText2,
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
+                            StarLangRow(
+                                screenWidth: screenWidth,
+                                starCount:
+                                    itemData["stargazers_count"].toString(),
+                                languageUsed: itemData["language"].toString(),
+                                widgetColor: themeData.colorScheme.onBackground,
+                                textStyle: themeData.textTheme.bodyText2!)
                           ],
                         ),
                       ],
