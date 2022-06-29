@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:git_repo_flutter/local/entity/local_repositories_entity.dart';
 import 'package:git_repo_flutter/models/repositories_model.dart';
 import 'package:git_repo_flutter/models/sample_data.dart';
 import 'package:git_repo_flutter/screens/elements/star_lang_row.dart';
@@ -7,7 +8,7 @@ import 'package:git_repo_flutter/utils/widget_function.dart';
 
 class TopUI extends StatelessWidget {
 
-  final Item item;
+  final LocalRepositoryEntity item;
 
   const TopUI({super.key, required this.item});
 
@@ -22,7 +23,7 @@ class TopUI extends StatelessWidget {
           height: 70,
           width: 70,
           child: ClipOval(
-            child: Image.network(item.owner!.avatarUrl.toString()),
+            child: Image.network(item.avatarUrl.toString()),
           ),
         ),
         addHorizontalSpace(20),
@@ -30,7 +31,7 @@ class TopUI extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              item.owner!.login.toString(),
+              item.login.toString(),
               style: themeData.textTheme.headline5,
             ),
             addVerticalSpace(5),

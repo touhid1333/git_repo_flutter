@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:git_repo_flutter/local/entity/local_repositories_entity.dart';
 import 'package:git_repo_flutter/models/repositories_model.dart';
 import 'package:git_repo_flutter/repositories/git_repository.dart';
 
@@ -7,18 +8,19 @@ class BaseController extends GetxController {
   RxString sortPref = "".obs;
 
   //all repository
-  RxList<Item> items = <Item>[].obs;
+  RxList<LocalRepositoryEntity> items = <LocalRepositoryEntity>[].obs;
 
   // ignore: unnecessary_cast
-  Rx<Item?> selectedItem = (null as Item?).obs;
+  Rx<LocalRepositoryEntity?> selectedItem = (null as LocalRepositoryEntity?).obs;
 
   //repository
   final GitRepository repositoryInstance = GitRepository();
 
   //get all list
   getRepositories() async {
-    items.value = (await repositoryInstance.getGitRepositoryData(
-        "Flutter", sortPref.value, "desc", "50"))!;
+    await repositoryInstance.getGitRepositoryData(
+        "Flutter", sortPref.value, "desc", "50");
+    items.value = await repositoryInstance.getAllRepositoryFromLocal();
   }
 
   //get sort pref

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:git_repo_flutter/controllers/base_controller.dart';
-import 'package:git_repo_flutter/local/shared_preff.dart';
-import 'package:git_repo_flutter/models/sample_data.dart';
 import 'package:git_repo_flutter/screens/elements/repository_tile.dart';
 import 'package:git_repo_flutter/screens/elements/sorting_ui.dart';
 import 'package:git_repo_flutter/utils/constants.dart';

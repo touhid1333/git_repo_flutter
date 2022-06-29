@@ -6,6 +6,7 @@ class AppConstants{
 
   static const String tagBaseController = "BaseController";
   static const String tagPref = "SharedPref";
+  static const String tagFloor = "FloorDB";
 
   static const String keySortPref = "sortPreference";
 

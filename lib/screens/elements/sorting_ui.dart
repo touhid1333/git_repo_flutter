@@ -13,7 +13,7 @@ showSortingPreferences(BuildContext context, double screenWidth,
   ];
   showDialog(
       context: context,
-      builder: (BuildContext context) {
+      builder: (BuildContext contextDialog) {
         return AlertDialog(
           content: SizedBox(
             width: screenWidth * 0.8,
@@ -33,10 +33,12 @@ showSortingPreferences(BuildContext context, double screenWidth,
                         return Container(
                           child: InkWell(
                             splashColor: themeData.colorScheme.primary,
-                            onTap: () {
-                              controller.saveSortPref(
+                            onTap: () async{
+                              await controller.saveSortPref(
                                   sortingOptions[index]["name"].toString());
-                              Get.offAllNamed(AppRoutes.repository);
+                              await controller.getSortPref();
+                              await controller.getRepositories();
+                              Navigator.pop(contextDialog);
                             },
                             child: Column(
                               children: [

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:git_repo_flutter/controllers/base_controller.dart';
+import 'package:git_repo_flutter/local/entity/local_repositories_entity.dart';
 import 'package:git_repo_flutter/models/repositories_model.dart';
 import 'package:git_repo_flutter/screens/elements/star_lang_row.dart';
 import 'package:git_repo_flutter/utils/app_routes.dart';
@@ -8,7 +9,7 @@ import 'package:git_repo_flutter/utils/constants.dart';
 import 'package:git_repo_flutter/utils/widget_function.dart';
 
 class RepositoryTile extends StatelessWidget {
-  final Item itemData;
+  final LocalRepositoryEntity itemData;
 
   const RepositoryTile({super.key, required this.itemData});
 
@@ -58,7 +59,7 @@ class RepositoryTile extends StatelessWidget {
                               StarLangRow(
                                   screenWidth: screenWidth,
                                   starCount: itemData.stargazersCount.toString(),
-                                  languageUsed: itemData.language.toString(),
+                                  languageUsed: "Dart",
                                   widgetColor: themeData.colorScheme.onBackground,
                                   textStyle: themeData.textTheme.bodyText2!)
                             ],
