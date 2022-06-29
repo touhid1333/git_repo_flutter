@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:git_repo_flutter/controllers/base_controller.dart';
+import 'package:git_repo_flutter/local/shared_preff.dart';
 import 'package:git_repo_flutter/models/sample_data.dart';
 import 'package:git_repo_flutter/screens/elements/repository_tile.dart';
+import 'package:git_repo_flutter/screens/elements/sorting_ui.dart';
 import 'package:git_repo_flutter/utils/constants.dart';
 
 class RepositoryScreen extends StatelessWidget {
@@ -11,6 +15,12 @@ class RepositoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
     final screenSize = MediaQuery.of(context).size;
+    final BaseController baseController =
+        Get.find(tag: AppConstants.tagBaseController);
+
+    //fetch initial data
+    baseController.getSortPref();
+    baseController.getRepositories();
     return Scaffold(
         backgroundColor: themeData.colorScheme.primary,
         appBar: AppBar(
@@ -44,7 +54,11 @@ class RepositoryScreen extends StatelessWidget {
                         style: themeData.textTheme.headline1,
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          //show sort preferences dialog
+                          showSortingPreferences(context, screenSize.width,
+                              themeData, baseController);
+                        },
                         splashColor: themeData.colorScheme.secondary,
                         customBorder: const CircleBorder(),
                         child: Container(
@@ -81,13 +95,13 @@ class RepositoryScreen extends StatelessWidget {
                             top: AppConstants.sidePadding,
                             left: AppConstants.sidePadding,
                             right: AppConstants.sidePadding),
-                        child: ListView.builder(
+                        child: Obx(() => ListView.builder(
                             physics: const BouncingScrollPhysics(),
-                            itemCount: sampleData.length,
+                            itemCount: baseController.items.length,
                             itemBuilder: (context, index) {
                               return RepositoryTile(
-                                  itemData: sampleData[index]);
-                            }),
+                                  itemData: baseController.items.value[index]);
+                            })),
                       ),
                     ),
                   ),
