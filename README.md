@@ -21,6 +21,10 @@ A Flutter application which shows the top 50 most starred github repositories by
    
 ## Screens
 
+<img src="https://github.com/touhid1333/git_repo_flutter/blob/master/assets/ss_01.png" width="375" height="667">
+
+<img src="https://github.com/touhid1333/git_repo_flutter/blob/master/assets/ss_02.png" width="375" height="667">
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
