@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:git_repo_flutter/local/entity/local_repositories_entity.dart';
 import 'package:git_repo_flutter/models/repositories_model.dart';
 import 'package:git_repo_flutter/repositories/git_repository.dart';
+import 'package:git_repo_flutter/utils/convert_utils.dart';
 
 class BaseController extends GetxController {
   //sort preference
@@ -18,8 +19,10 @@ class BaseController extends GetxController {
 
   //get all list
   getRepositories() async {
-    await repositoryInstance.getGitRepositoryData(
-        "Flutter", sortPref.value, "desc", "50");
+    if(await ConvertUtils().checkInternetConnection() == true){
+      await repositoryInstance.getGitRepositoryData(
+          "Flutter", sortPref.value, "desc", "50");
+    }
     items.value = await repositoryInstance.getAllRepositoryFromLocal();
   }
 

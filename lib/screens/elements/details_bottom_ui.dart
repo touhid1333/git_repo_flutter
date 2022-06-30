@@ -1,10 +1,16 @@
 
 import 'package:flutter/material.dart';
+import 'package:git_repo_flutter/local/entity/local_repositories_entity.dart';
 import 'package:git_repo_flutter/models/sample_data.dart';
 import 'package:git_repo_flutter/utils/widget_function.dart';
 
 class BottomUI extends StatelessWidget {
-  const BottomUI({Key? key}) : super(key: key);
+
+  final LocalRepositoryEntity item;
+
+  const BottomUI({super.key, required this.item});
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +30,7 @@ class BottomUI extends StatelessWidget {
             ),
             Expanded(
                 child: Text(
-                  sampleData[0]["description"].toString(),
+                  item.description,
                   style: themeData.textTheme.subtitle1,
                   textAlign: TextAlign.justify,
                 )),
@@ -43,7 +49,7 @@ class BottomUI extends StatelessWidget {
             ),
             Expanded(
                 child: Text(
-                  sampleData[0]["updated_at"].toString(),
+                  item.updatedAt,
                   style: themeData.textTheme.subtitle1,
                   textAlign: TextAlign.justify,
                 )),

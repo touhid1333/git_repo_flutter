@@ -5,6 +5,7 @@ import 'package:git_repo_flutter/local/floor_database.dart';
 import 'package:git_repo_flutter/local/shared_preff.dart';
 import 'package:git_repo_flutter/models/repositories_model.dart';
 import 'package:git_repo_flutter/utils/constants.dart';
+import 'package:git_repo_flutter/utils/convert_utils.dart';
 
 class GitRepository {
   final SharedPref sharedPref = Get.find(tag: AppConstants.tagPref);
@@ -31,7 +32,7 @@ class GitRepository {
                 stargazersCount: element.stargazersCount!,
                 login: element.owner!.login!,
                 avatarUrl: element.owner!.avatarUrl!,
-                updatedAt: element.updatedAt.toString());
+                updatedAt: ConvertUtils().formatDateToLocale(element.updatedAt.toString()));
             await addRepositoryToLocal(localRepositoryEntity);
           }
         }

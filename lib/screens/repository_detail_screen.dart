@@ -13,7 +13,8 @@ class RepositoryDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
     final screenSize = MediaQuery.of(context).size;
-    final BaseController baseController = Get.find(tag: AppConstants.tagBaseController);
+    final BaseController baseController =
+        Get.find(tag: AppConstants.tagBaseController);
     return Scaffold(
       backgroundColor: themeData.colorScheme.background,
       body: SafeArea(
@@ -40,7 +41,7 @@ class RepositoryDetailScreen extends StatelessWidget {
                         ),
                         addVerticalSpace(10),
                         //detail ui: bottom => description and last updated
-                        const BottomUI(),
+                        BottomUI(item: baseController.selectedItem.value!),
                       ],
                     )
                   : addVerticalSpace(0)),
